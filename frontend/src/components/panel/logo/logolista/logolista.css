@@ -1,0 +1,181 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.lista {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+/* Barra de búsqueda */
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Contenedor de las tarjetas */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 10px;
+}
+
+/* Estilo para cada tarjeta */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Imagen del logo */
+.logo-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Nombre del logo */
+.card p {
+    font-size: 1.1rem;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* Botón "Usar este logo" */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Iconos de editar y eliminar */
+.delete-ico, .edit-ico {
+    font-size: 1.5rem;
+    color: #FF4B5C;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+.delete-ico:hover, .edit-ico:hover {
+    color: #D43F50;
+}
+
+/* Estilo de los modales */
+.modal-delete, .modal-edit {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-delete .contend, .modal-edit .contend {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+}
+
+.modal-delete .contend p, .modal-edit .contend h2 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.modal-delete .btns, .modal-edit .btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.modal-delete .btn-SI, .modal-edit .btn-SI,
+.modal-delete .btn-NO, .modal-edit .btn-NO {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-delete .btn-SI, .modal-edit .btn-SI {
+    background-color: #28a745;
+    color: white;
+}
+
+.modal-delete .btn-NO, .modal-edit .btn-NO {
+    background-color: #dc3545;
+    color: white;
+}
+
+.modal-delete .btn-SI:hover, .modal-edit .btn-SI:hover {
+    background-color: #218838;
+}
+
+.modal-delete .btn-NO:hover, .modal-edit .btn-NO:hover {
+    background-color: #c82333;
+}
+
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}

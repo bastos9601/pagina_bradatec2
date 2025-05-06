@@ -1,71 +1,81 @@
 .carrito-container {
-    padding: 2rem;
+    padding: 1.5rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #f5f5f5;
     min-height: 100vh;
-  }
-  
-  .carrito-container h1 {
+    color: #333;
+}
+
+.carrito-container h1 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #333;
-  }
-  
-  .productos {
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+.productos {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
     margin-top: 1rem;
-  }
-  
-  .producto {
+}
+
+.producto {
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #e0e0e0;
     padding: 1rem;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease;
-  }
-  
-  .producto:hover {
-    transform: translateY(-5px);
-  }
-  
-  .producto img {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.producto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.producto img {
     width: 100%;
-    max-height: 200px;
+    height: 180px;
     object-fit: cover;
     border-radius: 8px;
-  }
-  
-  .producto h3 {
+}
+
+.producto h3 {
     margin-top: 0.5rem;
     font-size: 1.1rem;
-    color: #222;
-  }
-  
-  .producto p {
-    margin: 0.4rem 0;
-    color: #555;
-  }
-  
-  .producto label {
+    font-weight: 600;
+    color: #333;
+}
+
+.producto p {
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+    color: #777;
+}
+
+.producto label {
     display: block;
     margin-top: 0.5rem;
     font-weight: 500;
-  }
-  
-  .producto input[type="number"] {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.producto input[type="number"] {
     width: 100%;
-    padding: 0.4rem;
-    margin-top: 0.3rem;
-    border: 1px solid #ccc;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
-  }
-  
-  .producto button {
-    margin-top: 0.8rem;
+    background-color: #f7f7f7;
+}
+
+.producto button {
+    margin-top: 1rem;
     background-color: #ff4d4f;
     color: #fff;
     border: none;
@@ -73,47 +83,52 @@
     border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-  }
-  
-  .producto button:hover {
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.producto button:hover {
     background-color: #e43b3d;
-  }
-  
-  .total {
+}
+
+.total {
     margin-top: 2rem;
     font-size: 1.5rem;
-    font-weight: bold;
-    color: #2e7d32;
-  }
-  
-  .datos-cliente {
+    font-weight: 700;
+    color: #27ae60;
+    text-align: center;
+}
+
+.datos-cliente {
     margin-top: 2rem;
-    max-width: 400px;
-  }
-  
-  .datos-cliente h3 {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.datos-cliente h3 {
     margin-bottom: 1rem;
     font-size: 1.2rem;
+    font-weight: 600;
     color: #333;
-  }
-  
-  .datos-cliente input {
+}
+
+.datos-cliente input {
     width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.6rem;
-    border: 1px solid #ccc;
+    padding: 0.6rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 1rem;
-  }
-  
-  .datos-cliente span {
-    color: red;
+    background-color: #f7f7f7;
+}
+
+.datos-cliente span {
+    color: #e74c3c;
     font-size: 0.9rem;
-  }
-  
-  .finalizar-btn {
+}
+
+.finalizar-btn {
     margin-top: 1.5rem;
     background-color: #00b894;
     color: white;
@@ -121,27 +136,28 @@
     padding: 0.8rem;
     border-radius: 8px;
     font-size: 1.1rem;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .finalizar-btn:hover {
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.finalizar-btn:hover {
     background-color: #019875;
-  }
-  
-  .vaciar-btn {
+}
+
+.vaciar-btn {
     background-color: #d63031;
     color: white;
     padding: 0.6rem 1rem;
     border: none;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: 600;
     cursor: pointer;
     margin-bottom: 1rem;
-  }
-  
-  .vaciar-btn:hover {
+    width: 100%;
+}
+
+.vaciar-btn:hover {
     background-color: #c0392b;
-  }
-  
+}

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";import "./Carrito.css";
+import { useNavigate } from "react-router-dom";
 import "./Carrito.css";
 
 const Carrito = () => {
     const [carrito, setCarrito] = useState([]);
     const [cliente, setCliente] = useState({ Nombre: '', Apellido: '', NumCelular: '' });
     const [errores, setErrores] = useState({});
+    const [metodoPago, setMetodoPago] = useState('contra-entrega');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const Carrito = () => {
     const vaciarCarrito = () => {
         setCarrito([]);
         localStorage.removeItem("carrito");
-        navigate("/"); // Redirige a /inicio después de vaciar
+        navigate("/");
     };
 
     const cambiarCantidad = (index, nuevaCantidad) => {
@@ -42,12 +43,17 @@ const Carrito = () => {
         if (!cliente.Nombre.trim()) nuevosErrores.Nombre = 'Nombre requerido';
         if (!cliente.Apellido.trim()) nuevosErrores.Apellido = 'Apellido requerido';
         if (!cliente.NumCelular || isNaN(cliente.NumCelular)) nuevosErrores.NumCelular = 'Número inválido';
+        if (!metodoPago) nuevosErrores.MetodoPago = 'Método de pago requerido';
         setErrores(nuevosErrores);
         return Object.keys(nuevosErrores).length === 0;
     };
 
     const handleInputChange = (e) => {
         setCliente({ ...cliente, [e.target.name]: e.target.value });
+    };
+
+    const handleMetodoPagoChange = (e) => {
+        setMetodoPago(e.target.value);
     };
 
     const total = carrito.reduce((sum, producto) =>
@@ -62,11 +68,12 @@ const Carrito = () => {
 
             const mensajeCliente = `🛒 *Nueva Compra Realizada* %0A
 👤 *Cliente:* ${cliente.Nombre} ${cliente.Apellido}%0A
-📱 *Celular:* ${cliente.NumCelular}%0A%0A
+📱 *Celular:* ${cliente.NumCelular}%0A
 📦 *Productos:*%0A${carrito.map((p, i) =>
                 `${i + 1}. ${p.Nombre_Producto} - Cant: ${p.cantidad} - S/ ${parseFloat(p.Precio_Final).toFixed(2)}`
             ).join('%0A')}%0A%0A
-💵 *Total a pagar:* S/ ${total.toFixed(2)}`;
+💵 *Total a pagar:* S/ ${total.toFixed(2)}%0A
+💳 *Método de pago:* ${metodoPago === 'contra-entrega' ? 'Contra entrega' : 'Otro pago'}`;
 
             const numeroDestino = "51931201521";
             const urlWhatsapp = `https://wa.me/${numeroDestino}?text=${mensajeCliente}`;
@@ -74,7 +81,7 @@ const Carrito = () => {
             if (ventanaWhatsapp) setTimeout(() => ventanaWhatsapp.focus(), 1000);
 
             vaciarCarrito();
-            navigate("/inicio"); // Redirige a la ruta /inicio
+            navigate("/inicio");
         } catch (error) {
             console.error("Error al guardar cliente:", error);
             alert("Error al guardar datos del cliente.");
@@ -108,6 +115,7 @@ const Carrito = () => {
                                         onChange={(e) => cambiarCantidad(index, e.target.value)}
                                     />
                                 </label>
+                                <p>Envio: S/ 0,00</p>
                                 <p>Subtotal: S/ {(producto.cantidad * parseFloat(producto.Precio_Final)).toFixed(2)}</p>
                                 <button onClick={() => eliminarProducto(index)}>Eliminar</button>
                             </div>
@@ -145,6 +153,23 @@ const Carrito = () => {
                         />
                         {errores.NumCelular && <span style={{ color: 'red' }}>{errores.NumCelular}</span>}
                     </form>
+
+                    <div style={{ marginTop: '20px' }}>
+                        <h3>Método de pago</h3>
+                        <select value={metodoPago} onChange={handleMetodoPagoChange}>
+                            <option value="contra-entrega">Contra entrega</option>
+                            <option value="otra-opcion">Otra opción</option>
+                        </select>
+                        {errores.MetodoPago && <span style={{ color: 'red' }}>{errores.MetodoPago}</span>}
+
+                        {metodoPago === 'contra-entrega' && (
+                            <div style={{ marginTop: '10px', background: '#f0f0f0', padding: '10px', borderRadius: '8px' }}>
+                                <p style={{ fontSize: '16px' }}>
+                                    🚚 <strong>Contra entrega:</strong> Abonarás al recibir el pedido en tu domicilio.
+                                </p>
+                            </div>
+                        )}
+                    </div>
 
                     <button onClick={finalizarCompra} style={{ marginTop: '20px', background: 'green', color: 'white' }}>
                         Finalizar compra

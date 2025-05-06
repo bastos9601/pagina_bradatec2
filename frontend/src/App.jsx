@@ -18,7 +18,9 @@ import FormularioImagen from './components/panel/imagen/FormularioImagen';
 import ImagenLista from './components/panel/imagen/imagenlista/imagenlista';
 import FormularioLogo from './components/panel/logo/FormularioLogo';
 import LogoLista from './components/panel/logo/logolista/LogoLista';
+import Contacto from './components/subComponente/contacto';
 import ProtectedRoute from './components/ProtectedRoute'; // importado
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route path='/login' element={<LoginForm />} />
         <Route path='/servicio' element={<Servicio />} />
         <Route path='/carrito' element={<Carrito />} />
+        <Route path='/contacto' element={<Contacto />} />
         
 
         {/* Rutas protegidas */}

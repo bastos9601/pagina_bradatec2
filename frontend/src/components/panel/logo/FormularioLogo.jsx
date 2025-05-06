@@ -1,66 +1,88 @@
 import React, { useState } from 'react';
 import axios from 'axios';
- // También cambié el nombre del archivo CSS
+import './FormularioLogo.css';
 
 const FormularioLogo = () => {
-  const [tipoLogo, setTipoLogo] = useState('');
-  const [url, setUrl] = useState('');
+  const [nombreLogo, setNombreLogo] = useState('');
+  const [urlLogo, setUrlLogo] = useState('');
   const [mensaje, setMensaje] = useState('');
+  const [imagenValida, setImagenValida] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validaciones
-    if (!tipoLogo || !url) {
-      setMensaje('Por favor completa todos los campos.');
+    if (!nombreLogo || !urlLogo) {
+      setMensaje('Por favor, completa todos los campos.');
       return;
     }
 
     try {
-      // Envía los datos al backend con los nombres correctos
       const respuesta = await axios.post('http://localhost:3001/logo', {
-        Nombre_Logo: tipoLogo,  // Cambié de Tipo_Logo a Nombre_Logo
-        URL_Logo: url,          // Cambié de URL a URL_Logo
+        Nombre_Logo: nombreLogo,
+        URL_Logo: urlLogo,
       });
 
       if (respuesta.status === 201) {
         setMensaje('Logo agregado exitosamente.');
-        setTipoLogo('');
-        setUrl('');
+        setNombreLogo('');
+        setUrlLogo('');
+        setImagenValida(true);
       }
     } catch (error) {
+      console.error(error);
       setMensaje('Error al agregar el logo. Intenta nuevamente.');
     }
-};
-
+  };
 
   return (
-    <div>
-      <h2>Agregar Logo</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="tipoLogo">Tipo de Logo:</label>
+    <div className="formulario-logo-container">
+      <h2 className="formulario-logo-titulo">Agregar Nuevo Logo</h2>
+      <form className="formulario-logo" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="nombreLogo">Nombre del Logo:</label>
           <input
             type="text"
-            id="tipoLogo"
-            value={tipoLogo}
-            onChange={(e) => setTipoLogo(e.target.value)}
+            id="nombreLogo"
+            value={nombreLogo}
+            onChange={(e) => setNombreLogo(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor="url">URL del Logo:</label>
+        <div className="form-group">
+          <label htmlFor="urlLogo">URL del Logo:</label>
           <input
             type="text"
-            id="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
+            id="urlLogo"
+            value={urlLogo}
+            onChange={(e) => {
+              setUrlLogo(e.target.value);
+              setImagenValida(true); // Reinicia validación al cambiar
+            }}
             required
           />
         </div>
-        <button type="submit">Agregar Logo</button>
+
+        {urlLogo && (
+          <div className="preview-container">
+            {imagenValida ? (
+              <img
+                src={urlLogo}
+                alt="Previsualización del logo"
+                className="logo-preview"
+                onError={() => setImagenValida(false)}
+              />
+            ) : (
+              <p className="error-preview">No se pudo cargar la imagen.</p>
+            )}
+          </div>
+        )}
+
+        <button className="btn-enviar" type="submit">
+          Agregar Logo
+        </button>
       </form>
-      {mensaje && <p>{mensaje}</p>}
+
+      {mensaje && <p className="mensaje">{mensaje}</p>}
     </div>
   );
 };

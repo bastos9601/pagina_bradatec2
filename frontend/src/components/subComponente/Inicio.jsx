@@ -96,6 +96,17 @@ const Inicio = () => {
                     ))}
                 </div>
             </section>
+            <div className="whatsapp-ayuda">
+    <a
+        href="https://wa.me/51969142875?text=Hola,%20¿cómo%20puedes%20ayudarme?"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="btn-whatsapp"
+    >
+        ¿Cómo quieres que te ayude?
+    </a>
+</div>
+
 
         <footer>
             <div className="gg">
