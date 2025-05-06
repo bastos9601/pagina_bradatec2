@@ -1,5 +1,5 @@
 const Empleado = require('../models/Empleado');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 
 const createEmpleadoController = async ({ ID_Empleado,Nombre_Empleado, NumCelular,URL }) => {

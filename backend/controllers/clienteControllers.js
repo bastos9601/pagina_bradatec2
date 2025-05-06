@@ -1,5 +1,5 @@
 const Cliente= require('../models/Clientes')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs');
 
 const createClienteController = async({ID_Cliente, Nombre, Apellido, NumCelular})=>{
     try {
