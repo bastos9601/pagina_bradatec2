@@ -1,5 +1,5 @@
 const Administrador = require('../models/Administrador');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 
 const createAdministradorController = async ({ ID_Administrador, Nombre_Administrador, Usuario, Contrasena }) => {

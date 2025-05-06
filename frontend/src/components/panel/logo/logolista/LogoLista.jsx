@@ -67,6 +67,11 @@ const LogoLista = () => {
         }
     };
 
+    const seleccionarLogo = (url) => {
+        localStorage.setItem('logoSeleccionado', url);
+        alert('Logo seleccionado correctamente');
+    };
+
     const filteredLogos = logos.filter(logo => 
         logo.Nombre_Logo.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -88,6 +93,7 @@ const LogoLista = () => {
                     <div className='card' key={logo.ID_Logo}>
                         <img src={logo.URL_Logo} alt="Logo" className="logo-image" />
                         <p><strong>Nombre:</strong> {logo.Nombre_Logo}</p>
+                        <button onClick={() => seleccionarLogo(logo.URL_Logo)}>Usar este logo</button>
                         <RiDeleteBin5Fill className='delete-ico' onClick={() => handleDeleteModal(logo.ID_Logo)} />
                         <RiEdit2Fill className='edit-ico' onClick={() => handleEditModal(logo)} />
                     </div>

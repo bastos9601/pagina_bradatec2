@@ -1,147 +1,261 @@
 /* header.css */
 
+/* Estilos generales del header */
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 10px 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .logo {
-    height: 50px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .logo:hover {
-    transform: scale(1.05);
-  }
-  .logo-selector {
-  margin-left: 10px;
-  padding: 5px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-  
+.logo {
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 30px 0 0 30px;
+  outline: none;
+  font-size: 14px;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-box input:focus {
+  box-shadow: 0 0 5px rgba(0, 128, 255, 0.5);
+}
+
+.search-box button {
+  padding: 10px 15px;
+  background-color: rgba(0, 128, 255, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 0 30px 30px 0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+  background-color: #4a90e2;
+}
+
+.nav-iconos {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-iconos a,
+.nav-iconos .btn-menu {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-iconos a:hover,
+.nav-iconos .btn-menu:hover {
+  color: #4a90e2;
+}
+
+.menu {
+  position: relative;
+}
+
+.sub-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.sub-menu a {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.2s ease;
+}
+
+.sub-menu a:hover {
+  background-color: #f2f2f2;
+  color: #ff6f61;
+}
+
+/* Estilos del Modal del Carrito */
+.modal-carrito {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { right: -340px; }
+  to { right: 0; }
+}
+
+.modal-contenido {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: red;
+  transition: transform 0.3s ease;
+}
+
+.cerrar-modal:hover {
+  transform: scale(1.2);
+}
+
+h2 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f2f2f2;
+  padding-bottom: 10px;
+}
+
+li img {
+  max-width: 50px;
+  border-radius: 5px;
+}
+
+li div {
+  flex: 1;
+}
+
+strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: red;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.btn-comprar {
+  background-color: #28a745;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #218838;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Query para dispositivos móviles */
+@media (max-width: 768px) {
   .search-box {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    max-width: 500px;
-    margin: 0 20px;
+    display: none;
   }
-  
-  .search-box input {
-    width: 100%;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-right: none;
-    border-radius: 30px 0 0 30px;
-    outline: none;
-    font-size: 14px;
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .search-box input:focus {
-    box-shadow: 0 0 5px rgba(0, 128, 255, 0.5);
-  }
-  
-  .search-box button {
-    padding: 10px 15px;
-    background-color:  rgba(0, 128, 255, 0.5);
-    color: #fff;
-    border: none;
-    border-radius: 0 30px 30px 0;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .search-box button:hover {
-    background-color: #4a90e2;
-  }
-  
+
   .nav-iconos {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    gap: 10px;
+    font-size: 14px;
   }
-  
-  .nav-iconos a,
-  .nav-iconos .btn-menu {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    position: relative;
-  }
-  
-  .nav-iconos a:hover,
-  .nav-iconos .btn-menu:hover {
-    color: #4a90e2
-  }
-  
-  .menu {
-    position: relative;
-  }
-  
-  .sub-menu {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    display: flex;
+
+  .header {
     flex-direction: column;
-    min-width: 150px;
-    animation: fadeIn 0.3s ease-in-out;
+    align-items: flex-start;
   }
-  
-  .sub-menu a {
-    padding: 8px 12px;
-    text-decoration: none;
-    color: #333;
-    transition: background-color 0.2s ease;
+
+  .modal-carrito {
+    width: 100%;
+    right: 0;
   }
-  
-  .sub-menu a:hover {
-    background-color: #f2f2f2;
-    color: #ff6f61;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10%);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .search-box {
-      display: none;
-    }
-  
-    .nav-iconos {
-      gap: 10px;
-      font-size: 14px;
-    }
-  
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-  
+}
